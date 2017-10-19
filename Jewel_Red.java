@@ -62,6 +62,9 @@ public class Jewel_Red extends LinearOpMode {
     DcMotor leftBackMotor;
     DcMotor rightBackMotor;
 
+    //This program assumes that the side of the robot that is facing the jewels has the color sensor.
+    //The color sensor should be sensing the jewel on the right side of the separator.
+    
     @Override
     public void runOpMode() {
         telemetry.addData("Status", "Initialized");
@@ -84,12 +87,12 @@ public class Jewel_Red extends LinearOpMode {
         leftBackMotor = hardwareMap.dcMotor.get("Left_Back_Motor");
         rightBackMotor= hardwareMap.dcMotor.get("Right_Back_Motor");
 
-        if (cs.red() > 200) {
+        if (cs.red() > 200) { // turn left
             leftMotor.setPower(0.0);
             rightMotor.setPower(0.5);
             leftBackMotor.setPower(0.0);
             rightBackMotor.setPower(0.5);
-        }else{
+        }else{ // turn right
             leftMotor.setPower(0.5);
             rightMotor.setPower(0.0);
             leftBackMotor.setPower(0.5);
@@ -98,12 +101,5 @@ public class Jewel_Red extends LinearOpMode {
 
         servoPosition = 0.5;
         servo.setPosition(servoPosition);
-
-        //if(TEAM_COLOR = c) turn left (left stop, right move)
-        //else turn right (right stop, left move)
     }
 }
-
-//red: 340 to 20 degrees
-//green: 100 to 140 degrees
-//blue: 210 to 275, saturation > 0.6
