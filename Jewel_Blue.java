@@ -61,6 +61,8 @@ public class Jewel_Blue extends LinearOpMode {
     DcMotor leftBackMotor;
     DcMotor rightBackMotor;
 
+    //This program assumes that the side of the robot that is facing the jewels has the color sensor.
+    
     @Override
     public void runOpMode() {
         telemetry.addData("Status", "Initialized");
@@ -82,8 +84,8 @@ public class Jewel_Blue extends LinearOpMode {
         rightMotor = hardwareMap.dcMotor.get("Right_Motor");
         leftBackMotor = hardwareMap.dcMotor.get("Left_Back_Motor");
         rightBackMotor= hardwareMap.dcMotor.get("Right_Back_Motor");
-
-        if (cs.blue() > 200) {
+        
+        if (cs.blue() > 200) { //I'm not sure it works this way - help, any1?
             leftMotor.setPower(0.0);
             rightMotor.setPower(0.5);
             leftBackMotor.setPower(0.0);
