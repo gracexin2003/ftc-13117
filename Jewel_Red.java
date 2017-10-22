@@ -1,14 +1,11 @@
 package org.firstinspires.ftc.teamcode;
 
-import android.graphics.Color;
-
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
-import com.qualcomm.robotcore.util.Range;
 
 /**
  * In this program, the side of the robot that is facing the jewels has the color sensor.
@@ -21,17 +18,16 @@ public class Jewel_Red extends LinearOpMode {
     private ElapsedTime runtime = new ElapsedTime();
 
     ColorSensor cs;
-    Color c;
 
     Servo mainServo;
-    Servo seconsServo;
+    Servo secondServo;
     double servoPosition = 0.0;
 
     DcMotor leftMotor;
     DcMotor rightMotor;
     DcMotor leftBackMotor;
     DcMotor rightBackMotor;
-    
+
     @Override
     public void runOpMode() {
         telemetry.addData("Status", "Initialized");
@@ -75,5 +71,5 @@ public class Jewel_Red extends LinearOpMode {
         sleep(50);
         secondServo.setPosition(servoPosition);
     }
-    
+
 }
