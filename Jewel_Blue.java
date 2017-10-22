@@ -50,9 +50,7 @@ public class Jewel_Blue extends LinearOpMode {
 
         servoPosition = 1.0;
         secondServo.setPosition(servoPosition);
-        
         sleep(50);
-        
         mainServo.setPosition(servoPosition);
 
         leftMotor = hardwareMap.dcMotor.get("Left_Motor");
@@ -74,6 +72,7 @@ public class Jewel_Blue extends LinearOpMode {
 
         servoPosition = 0.0;
         mainServo.setPosition(servoPosition);
+        sleep(50);
         secondServo.setPosition(servoPosition);
 
     }
