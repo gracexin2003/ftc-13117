@@ -41,6 +41,7 @@ public class Jewel_Red extends LinearOpMode {
         cs.enableLed(true);
 
         secondServo = hardwareMap.servo.get("servo2");
+        secondServo.setPosition(servoPosition);
         mainServo = hardwareMap.servo.get("servo1");
         mainServo.setPosition(servoPosition);
 
