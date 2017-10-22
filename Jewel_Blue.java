@@ -51,7 +51,7 @@ public class Jewel_Blue extends LinearOpMode {
         servoPosition = 1.0;
         secondServo.setPosition(servoPosition);
         
-        sleep(500);
+        sleep(50);
         
         mainServo.setPosition(servoPosition);
 
