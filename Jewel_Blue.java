@@ -3,7 +3,7 @@ package org.firstinspires.ftc.teamcode;
 import android.graphics.Color;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
@@ -20,7 +20,6 @@ public class Jewel_Blue extends LinearOpMode {
     private ElapsedTime runtime = new ElapsedTime();
 
     ColorSensor cs;
-    Color c;
 
     Servo mainServo;
     Servo secondServo;
@@ -30,7 +29,7 @@ public class Jewel_Blue extends LinearOpMode {
     DcMotor rightMotor;
     DcMotor leftBackMotor;
     DcMotor rightBackMotor;
-    
+
     @Override
     public void runOpMode() {
         telemetry.addData("Status", "Initialized");
@@ -38,7 +37,7 @@ public class Jewel_Blue extends LinearOpMode {
 
         cs = hardwareMap.colorSensor.get("Color Sensor");
         cs.enableLed(true);
-        
+
         secondServo = hardwareMap.servo.get("servo2");
         secondServo.setPosition(servoPosition);
         mainServo = hardwareMap.servo.get("servo1");
@@ -56,7 +55,7 @@ public class Jewel_Blue extends LinearOpMode {
         rightMotor = hardwareMap.dcMotor.get("Right_Motor");
         leftBackMotor = hardwareMap.dcMotor.get("Left_Back_Motor");
         rightBackMotor= hardwareMap.dcMotor.get("Right_Back_Motor");
-        
+
         if (cs.blue() > 200) { //I'm not sure it works this way - help, any1?
             leftMotor.setPower(0.0);
             rightMotor.setPower(0.5);
@@ -74,5 +73,5 @@ public class Jewel_Blue extends LinearOpMode {
         sleep(50);
         secondServo.setPosition(servoPosition);
     }
-    
+
 }
