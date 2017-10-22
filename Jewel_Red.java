@@ -15,7 +15,7 @@ import com.qualcomm.robotcore.util.Range;
  * The color sensor is supposed to sense the color of the ball on the right side of the podium.
  */
 
-@TeleOp(name="Jewel_Red", group="Linear Opmode")
+@Autonomous(name="Jewel_Red", group="Linear Opmode")
 public class Jewel_Red extends LinearOpMode {
 
     private ElapsedTime runtime = new ElapsedTime();
@@ -75,4 +75,5 @@ public class Jewel_Red extends LinearOpMode {
         sleep(50);
         secondServo.setPosition(servoPosition);
     }
+    
 }
