@@ -32,7 +32,7 @@ public class LiftServos extends LinearOpMode {
         boolean backOpen = false;
 
         while (opModeIsActive()) {
-            if(gamepad1.right_trigger != 0.0) {
+            if(gamepad1.right_trigger == 1) {
                 open = false;
                 leftServo.setPosition(0.0);
                 rightServo.setPosition(0.0);
@@ -42,7 +42,7 @@ public class LiftServos extends LinearOpMode {
                 rightServo.setPosition(0.5);
             }
 
-            if(gamepad1.left_trigger != 0.0){
+            if(gamepad1.left_trigger == 1){
                 backOpen = false;
                 leftBackServo.setPosition(0.0);
                 rightBackServo.setPosition(0.0);
