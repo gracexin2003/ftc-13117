@@ -39,7 +39,7 @@ public class Autonomous extends LinearOpMode {
         telemetry.update();
 
         if (this.side == Program.none)
-            throw new RuntimeException("Side has not been set, please set before running. Dum-dum");
+            throw new RuntimeException("Set side before running.");
 
         telemetry.addData("Status", "Initialized");
         telemetry.update();
