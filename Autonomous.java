@@ -1,9 +1,9 @@
 package org.firstinspires.ftc.teamcode;
 
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.Servo;
-import com.qualcomm.robotcore.util.ElapsedTime;
+import com.qualcomm.robotcore.eventloop.opmode.*;
+import com.qualcomm.robotcore.hardware.*;
+import com.qualcomm.robotcore.util.*;
+import com.qualcomm.hardware.modernrobotics.*;
 
 @com.qualcomm.robotcore.eventloop.opmode.Autonomous
 public class Autonomous extends LinearOpMode {
@@ -18,6 +18,7 @@ public class Autonomous extends LinearOpMode {
     private Servo rightBackServo;
     private Servo bottomServo;
     private Servo topServo;
+    private ModernRoboticsI2cColorSensor colorSensor;
 
     Servo servo1;
     Servo servo2;
@@ -38,13 +39,10 @@ public class Autonomous extends LinearOpMode {
         telemetry.addData("Status", "Initialized");
         telemetry.update();
 
-        if (this.side == Program.none)
-            throw new RuntimeException("Set side before running.");
+        if (this.side == Program.none) throw new RuntimeException("Set side before running.");
 
         telemetry.addData("Status", "Initialized");
         telemetry.update();
-
-        double servoPosition = 0.5;
 
         leftBackMotor = hardwareMap.dcMotor.get("Left_Back_Motor");
         rightBackMotor = hardwareMap.dcMotor.get("Right_Back_Motor");
@@ -61,10 +59,12 @@ public class Autonomous extends LinearOpMode {
         bottomServo = hardwareMap.servo.get("Bottom_Servo");
         topServo = hardwareMap.servo.get("Top_Servo");
 
-        double power = 0.5;
+        colorSensor = hardwareMap.get(ModernRoboticsI2cColorSensor.class,"Color_Sensor");
 
         waitForStart();
         runtime.reset();
+
+        colorSensor.enableLed(false);
 
         backLift.setPower(0.2);
 
@@ -72,8 +72,33 @@ public class Autonomous extends LinearOpMode {
 
         bottomServo.setPosition(0);
         topServo.setPosition(0.8);
-
-        power = 0;
+        
+        sleep(500);
+        
+        // TODO change based on team
+        if(colorSensor.readUnsignedByte(ModernRoboticsI2cColorSensor.Register.COLOR_NUMBER) == 2
+                || colorSensor.readUnsignedByte(ModernRoboticsI2cColorSensor.Register.COLOR_NUMBER) == 3){
+            //turn right
+            leftBackMotor.setPower(0.5);
+            rightBackMotor.setPower(0.0);
+    
+            sleep(2000); //TODO change based on how long want to turn
+            
+            leftBackMotor.setPower(0.0);
+            rightBackMotor.setPower(0.0);
+        }else if(colorSensor.readUnsignedByte(ModernRoboticsI2cColorSensor.Register.COLOR_NUMBER) == 11
+                || colorSensor.readUnsignedByte(ModernRoboticsI2cColorSensor.Register.COLOR_NUMBER) == 12){
+            //turn left
+            leftBackMotor.setPower(0.0);
+            rightBackMotor.setPower(0.5);
+    
+            sleep(2000); //TODO change based on how long want to turn
+    
+            leftBackMotor.setPower(0.0);
+            rightBackMotor.setPower(0.0);
+        }
+        
+        double power = 0;
 
         leftBackMotor.setPower(power);
         rightBackMotor.setPower(power);
