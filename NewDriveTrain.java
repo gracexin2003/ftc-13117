@@ -27,8 +27,6 @@ public class Drivetrain extends LinearOpMode {
 
     private ElapsedTime runtime = new ElapsedTime();
 
-    //DcMotor leftMotor;
-    //DcMotor rightMotor;
     DcMotor leftBackMotor;
     DcMotor rightBackMotor;
     DcMotor frontLift;
@@ -43,15 +41,10 @@ public class Drivetrain extends LinearOpMode {
         telemetry.addData("Status", "Initialized");
         telemetry.update();
 
-        /*leftMotor = hardwareMap.dcMotor.get("Left_Motor");
-        rightMotor = hardwareMap.dcMotor.get("Right_Motor");*/
         leftBackMotor = hardwareMap.dcMotor.get("Left_Back_Motor");
         rightBackMotor = hardwareMap.dcMotor.get("Right_Back_Motor");
 
-        /*leftMotor.setDirection(DcMotorSimple.Direction.REVERSE);*/
         rightBackMotor.setDirection(DcMotorSimple.Direction.REVERSE);
-        //leftBackMotor.setPower(0.3);
-        //rightBackMotor.setPower(0.3);
         leftBackMotor.setPower(-gamepad1.left_stick_y/2.0);
         rightBackMotor.setPower(-gamepad1.right_stick_y/2.0);
 
@@ -60,23 +53,17 @@ public class Drivetrain extends LinearOpMode {
 
         frontServo = hardwareMap.servo.get("Front_Servo");
         frontServo.setPosition(0.1);
-        //leftServo.setPosition(0.7);
         backServo = hardwareMap.servo.get("Back_Servo");
-        //rightServo.setPosition(0.3);
         backServo.setPosition(0.7);
         leftBackServo = hardwareMap.servo.get("Left_Back_Servo");
         leftBackServo.setPosition(0.75);
         rightBackServo= hardwareMap.servo.get("Right_Back_Servo");
-        //rightBackServo.setPosition(1);
         rightBackServo.setPosition(0.05);
 
         waitForStart();
         runtime.reset();
 
         while (opModeIsActive()){
-
-            /*leftMotor.setPower(-gamepad1.left_stick_y);
-            rightMotor.setPower(-gamepad1.right_stick_y);*/
             leftBackMotor.setPower(-gamepad1.left_stick_y);
             rightBackMotor.setPower(-gamepad1.right_stick_y);
 
