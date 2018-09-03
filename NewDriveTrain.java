@@ -66,7 +66,7 @@ public class Drivetrain extends LinearOpMode {
             
             if(gamepad2.left_bumper) {
                 frontServo.setPosition(0.67);
-                backServo.setPosition(0.10);
+                backServo.setPosition(0.90);
             }
 
             if(gamepad2.left_trigger != 0) {
@@ -74,12 +74,12 @@ public class Drivetrain extends LinearOpMode {
                 backServo.setPosition(0.50);
             }
             
-            if(gamepad2.right_bumper){
+            if(gamepad2.right_bumper) {
                 leftBackServo.setPosition(0.22);
                 rightBackServo.setPosition(0.39);
             }
 
-            if(gamepad2.right_trigger != 0){
+            if(gamepad2.right_trigger != 0) {
                 leftBackServo.setPosition(0.5);
                 rightBackServo.setPosition(0.1);
             }
